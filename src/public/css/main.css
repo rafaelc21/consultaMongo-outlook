@@ -1,0 +1,113 @@
+body{
+    background: #3d72b4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3d72b4, #8397c0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3d72b4, #8397c0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+#mycontainer {
+  max-width: 70% !important;
+}
+
+hr {
+    border-top: 1px solid rgba(22, 22, 141, 0.5);
+  }
+
+  
+  .tooltip-main {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-weight: 700;
+    background: #f3f3f3;
+    border: 1px solid #737373;
+    color: #737373;
+    margin: 4px 121px 0 5px;
+    float: right;
+    text-align: left !important;
+  }
+  
+  .tooltip-qm {
+    float: left;
+    margin: -2px 0px 3px 4px;
+    font-size: 12px;
+  }
+  
+  .tooltip-inner {
+    max-width: 236px !important;
+    height: 76px;
+    font-size: 12px;
+    padding: 10px 15px 10px 20px;
+    background: #FFFFFF;
+    color: rgb(0, 0, 0, .7);
+    border: 1px solid #737373;
+    text-align: left;
+  }
+  
+  .tooltip.show {
+    opacity: 1;
+  }
+  
+  .bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+  .bs-tooltip-bottom .arrow::before {
+    border-bottom-color: #f00;
+    /* Red */
+  }
+  
+
+  
+.btn {
+  font-weight: 700;
+  height: 36px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.botonesControl{
+  position:fixed;
+  z-index: 1;
+}
+
+.circuloGuardar {
+  width: 35px;
+  height: 35px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #2a752a;
+  position: relative;
+  display: block;
+}
+
+.circuloImprimir {
+  width: 35px;
+  height: 35px;
+  -moz-border-radius: 0%;
+  -webkit-border-radius: 0%;
+  border-radius: 50%;
+  background: #16a9bd;
+  position: relative;
+}
+
+.circuloCerrar {
+  width: 35px;
+  height: 35px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #97541d;
+  position: relative;
+}
+
+
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+
+
