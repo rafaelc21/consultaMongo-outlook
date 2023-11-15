@@ -8,9 +8,7 @@ router.get('/',  async (req,res)=>{
     res.render('busqueda');
 });
 
-
 router.post('/',  async (req,res)=>{
-
     console.log("Esto es post");
     const parametros = JSON.parse(JSON.stringify(req.body)); 
     const palabra  = parametros.busqueda ;  
