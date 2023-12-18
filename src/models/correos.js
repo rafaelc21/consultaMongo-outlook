@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const recipientSchema = new Schema({
-  Nombre: String,
-  DireccionCorreo: String
+  "Nombre": String,
+  "Dirección de correo": String
 });
 
 const attachmentSchema = new Schema({
@@ -12,21 +12,19 @@ const attachmentSchema = new Schema({
 });
 
 const correos = new Schema({
+  _id: mongoose.Schema.Types.ObjectId, 
   Tipo: String,
-  Tema: String,
-  EnviadoPor: String,
-  Recibido: Date,
-  Cuerpo: String,
+  Subject: String,
+  SenderName: String,
+  ReceivedTime: Date,
+  Body: String,
   CC: String,
   BCC: String,
-  Enviado: Date,
-  Detinatarios: [recipientSchema],
+  SentOn: Date,
+  Recipients: [recipientSchema],
   HTMLBody: String,
-  Adjuntos: [attachmentSchema]
+  Attachments: [attachmentSchema]
 });
-
-correos.index({ Cuerpo: 'text' });
-
 
 module.exports = mongoose.model('correo', correos);
 

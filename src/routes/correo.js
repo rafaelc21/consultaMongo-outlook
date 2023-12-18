@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { format, utcToZonedTime } = require('date-fns-tz'); 
+const moment = require('moment-timezone');
+const esLocale = require('date-fns/locale/es'); 
 
 const correo = require('../models/correos');
 
@@ -13,15 +16,15 @@ router.post('/',  async (req,res)=>{
     const parametros = JSON.parse(JSON.stringify(req.body)); 
     const palabra  = parametros.busqueda ;  
     //console.log(palabra);
+    
     try {
         const resultados = await correo.find({
           $or: [
-            { Cuerpo: { $regex: new RegExp(palabra, 'i') } }, // 'i' para hacer la búsqueda sin distinción entre mayúsculas y minúsculas
-            { EnviadoPor: { $regex: new RegExp(palabra, 'i') } },
+            { Body: { $regex: new RegExp(palabra, 'i') } }, // 'i' para hacer la búsqueda sin distinción entre mayúsculas y minúsculas
+            { SenderName: { $regex: new RegExp(palabra, 'i') } },
           ],
         }).sort({ Recibido: -1 });
-        console.log(resultados);
-
+        
         res.render('busqueda',{datos : resultados, busqueda : palabra});
 
       } catch (error) {

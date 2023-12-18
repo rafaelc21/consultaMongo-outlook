@@ -14,6 +14,10 @@ const Handlebars = require('handlebars');
 const expressHandlebars = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
  
+
+const { format } = require('date-fns');
+const esLocale = require('date-fns/locale/es');
+
 //Inicialización
 const app = express();
 app.use(cors());
@@ -33,7 +37,15 @@ app.engine('.hbs', exphbs({
     defaulLayout: 'main',
     layoutsDir: path.join(app.get('views'),'layouts'),
     handlebars: allowInsecurePrototypeAccess(Handlebars),
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        formatFecha: (fechaIso8601) => {
+            const zonaHoraria = 'America/Mexico_City'; // Ajusta según tu necesidad
+            const fecha = new Date(fechaIso8601);
+            const opciones = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', espacio: "<br>", hour: 'numeric', minute: 'numeric', timeZone: zonaHoraria };
+            return new Intl.DateTimeFormat('es', opciones).format(fecha);
+        }
+    }
 }));
 
 app.set('view engine','.hbs');
@@ -54,6 +66,8 @@ app.use(session({
     resave:false,
     saveUninitialized:true
 }));
+
+
 
 
 require('./database');
